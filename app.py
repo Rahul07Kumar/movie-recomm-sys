@@ -3,6 +3,8 @@ import pickle
 import pandas as pd
 import requests
 import gdown
+import os
+
 
 def fetch_poster(movie_id):
     response=requests.get('https://api.themoviedb.org/3/movie/{}?api_key=8265bd1679663a7ea12ac168da84d2e8&language=en-US'.format(movie_id))
@@ -33,16 +35,30 @@ movies = pd.DataFrame(movies_dict)
 
 # similarity = pickle.load(open('similarity.pkl','rb'))
 
+# url = "https://drive.google.com/uc?id=1aKqIeHn-khZ0KMmPTODfHQLSxvl56I80"
+# output = "similarity.pkl"
+
+# # Download the file:
+# gdown.download(url, output, quiet=False)
+
+# # Now open the downloaded file:
+# with open(output, 'rb') as file:
+#     similarity = pickle.load(file)
+
+
+filename = "similarity.pkl"
 url = "https://drive.google.com/uc?id=1aKqIeHn-khZ0KMmPTODfHQLSxvl56I80"
-output = "similarity.pkl"
 
-# Download the file:
-gdown.download(url, output, quiet=False)
+# Check if the file already exists
+if not os.path.exists(filename):
+    print(f"File '{filename}' not found locally. Downloading...")
+    gdown.download(url, filename, quiet=False)
+else:
+    print(f"File '{filename}' already exists. Skipping download.")
 
-# Now open the downloaded file:
-with open(output, 'rb') as file:
+# Now open and load the pickle file
+with open(filename, 'rb') as file:
     similarity = pickle.load(file)
-
 
 
 
