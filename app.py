@@ -31,17 +31,17 @@ print(type(movies_dict))
 movies = pd.DataFrame(movies_dict)
 
 
-similarity = pickle.load(open('/opt/render/project/src/similarity.pkl','rb'))
+# similarity = pickle.load(open('similarity.pkl','rb'))
 
-# url = "https://drive.google.com/uc?id=1aKqIeHn-khZ0KMmPTODfHQLSxvl56I80"
-# output = "similarity.pkl"
+url = "https://drive.google.com/uc?id=1aKqIeHn-khZ0KMmPTODfHQLSxvl56I80"
+output = "similarity.pkl"
 
-# # Download the file:
-# gdown.download(url, output, quiet=False)
+# Download the file:
+gdown.download(url, output, quiet=False)
 
-# # Now open the downloaded file:
-# with open(output, 'rb') as file:
-#     similarity = pickle.load(file)
+# Now open the downloaded file:
+with open(output, 'rb') as file:
+    similarity = pickle.load(file)
 
 
 
