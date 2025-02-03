@@ -3,7 +3,7 @@ import pickle
 import pandas as pd
 import requests
 import gdown
-import os
+# import os
 
 
 def fetch_poster(movie_id):
@@ -35,30 +35,30 @@ movies = pd.DataFrame(movies_dict)
 
 # similarity = pickle.load(open('similarity.pkl','rb'))
 
-# url = "https://drive.google.com/uc?id=1aKqIeHn-khZ0KMmPTODfHQLSxvl56I80"
-# output = "similarity.pkl"
-
-# # Download the file:
-# gdown.download(url, output, quiet=False)
-
-# # Now open the downloaded file:
-# with open(output, 'rb') as file:
-#     similarity = pickle.load(file)
-
-
-filename = "similarity.pkl"
 url = "https://drive.google.com/uc?id=1aKqIeHn-khZ0KMmPTODfHQLSxvl56I80"
+output = "similarity.pkl"
 
-# Check if the file already exists
-if not os.path.exists(filename):
-    print(f"File '{filename}' not found locally. Downloading...")
-    gdown.download(url, filename, quiet=False)
-else:
-    print(f"File '{filename}' already exists. Skipping download.")
+# Download the file:
+gdown.download(url, output, quiet=False)
 
-# Now open and load the pickle file
-with open(filename, 'rb') as file:
+# Now open the downloaded file:
+with open(output, 'rb') as file:
     similarity = pickle.load(file)
+
+
+# filename = "similarity.pkl"
+# url = "https://drive.google.com/uc?id=1aKqIeHn-khZ0KMmPTODfHQLSxvl56I80"
+
+# # Check if the file already exists
+# if not os.path.exists(filename):
+#     print(f"File '{filename}' not found locally. Downloading...")
+#     gdown.download(url, filename, quiet=False)
+# else:
+#     print(f"File '{filename}' already exists. Skipping download.")
+
+# # Now open and load the pickle file
+# with open(filename, 'rb') as file:
+#     similarity = pickle.load(file)
 
 
 
